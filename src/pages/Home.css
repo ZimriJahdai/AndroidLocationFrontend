@@ -1,0 +1,27 @@
+.form-container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+.form-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.permission-text {
+  color: var(--ion-color-medium);
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  margin-top: 24px;
+}
+
+.status-text {
+  margin-top: 18px;
+  font-size: 14px;
+}
