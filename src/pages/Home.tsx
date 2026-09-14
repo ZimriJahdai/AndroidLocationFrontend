@@ -19,6 +19,8 @@ import './Home.css';
 
 const Home: React.FC = () => {
   const [fullName, setFullName] = useState('');
+  const [className, setClassName] = useState('');
+  const [leaderName, setLeaderName] = useState('');
   const [phone, setPhone] = useState('');
   const [comment, setComment] = useState('');
   const [status, setStatus] = useState('');
@@ -35,13 +37,17 @@ const Home: React.FC = () => {
 
       const response = await createForm({
         fullName,
+        className,
+        leaderName,
         phone,
         comment,
         location
       });
 
-      setStatus(`Formulario enviado correctamente. ID: ${response.formId}`);
+      setStatus(`Asistencia registrada correctamente. ID: ${response.formId}`);
       setFullName('');
+      setClassName('');
+      setLeaderName('');
       setPhone('');
       setComment('');
     } catch (error) {
@@ -56,61 +62,88 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Registro con ubicación</IonTitle>
+          <IonTitle>Registro de asistencia</IonTitle>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="ion-padding">
+      <IonContent fullscreen className="attendance-page">
         <div className="form-container">
-          <h1>Formulario</h1>
+          <section className="brand-panel">
+            <img className="church-logo" src="/logo.png" alt="Dios el unico camino" />
+            <div>
+              <span className="eyebrow">Ministerio de alumnos</span>
+              <h1>Registro de asistencia</h1>
+              <p>Completa tus datos para confirmar tu participacion en la clase de hoy.</p>
+            </div>
+          </section>
 
-          <p className="permission-text">
-            Al enviar este formulario se solicitará tu ubicación para registrar desde dónde fue enviado.
-          </p>
+          <section className="form-card">
+            <p className="permission-text">
+              Para validar la asistencia presencial, al registrar se solicitará tu ubicación actual.
+            </p>
 
-          <IonItem>
-            <IonLabel position="stacked">Nombre completo</IonLabel>
-            <IonInput
-              value={fullName}
-              onIonInput={(event) => setFullName(event.detail.value ?? '')}
-              placeholder="Ingresa tu nombre"
-            />
-          </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Nombre completo</IonLabel>
+              <IonInput
+                value={fullName}
+                onIonInput={(event) => setFullName(event.detail.value ?? '')}
+                placeholder="Nombre y apellido"
+              />
+            </IonItem>
 
-          <IonItem>
-            <IonLabel position="stacked">Teléfono</IonLabel>
-            <IonInput
-              value={phone}
-              onIonInput={(event) => setPhone(event.detail.value ?? '')}
-              placeholder="Ingresa tu teléfono"
-              type="tel"
-            />
-          </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Clase o grupo</IonLabel>
+              <IonInput
+                value={className}
+                onIonInput={(event) => setClassName(event.detail.value ?? '')}
+                placeholder="Ej. Jovenes, discipulado, escuela dominical"
+              />
+            </IonItem>
 
-          <IonItem>
-            <IonLabel position="stacked">Comentario</IonLabel>
-            <IonTextarea
-              value={comment}
-              onIonInput={(event) => setComment(event.detail.value ?? '')}
-              placeholder="Escribe un comentario"
-              rows={4}
-            />
-          </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Lider o encargado</IonLabel>
+              <IonInput
+                value={leaderName}
+                onIonInput={(event) => setLeaderName(event.detail.value ?? '')}
+                placeholder="Nombre del encargado"
+              />
+            </IonItem>
 
-          <IonButton
-            expand="block"
-            onClick={handleSubmit}
-            disabled={loading || !fullName || !phone}
-            className="submit-button"
-          >
-            {loading ? <IonSpinner name="crescent" /> : 'Enviar formulario'}
-          </IonButton>
+            <IonItem>
+              <IonLabel position="stacked">Telefono</IonLabel>
+              <IonInput
+                value={phone}
+                onIonInput={(event) => setPhone(event.detail.value ?? '')}
+                placeholder="Numero de contacto"
+                type="tel"
+              />
+            </IonItem>
 
-          {status && (
-            <IonText>
-              <p className="status-text">{status}</p>
-            </IonText>
-          )}
+            <IonItem>
+              <IonLabel position="stacked">Observacion opcional</IonLabel>
+              <IonTextarea
+                value={comment}
+                onIonInput={(event) => setComment(event.detail.value ?? '')}
+                placeholder="Comentario, peticion o nota de asistencia"
+                rows={4}
+              />
+            </IonItem>
+
+            <IonButton
+              expand="block"
+              onClick={handleSubmit}
+              disabled={loading || !fullName || !className || !leaderName || !phone}
+              className="submit-button"
+            >
+              {loading ? <IonSpinner name="crescent" /> : 'Registrar asistencia'}
+            </IonButton>
+
+            {status && (
+              <IonText>
+                <p className="status-text">{status}</p>
+              </IonText>
+            )}
+          </section>
         </div>
       </IonContent>
     </IonPage>
