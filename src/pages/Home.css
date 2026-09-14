@@ -1,27 +1,102 @@
-.form-container {
-  max-width: 520px;
-  margin: 0 auto;
-  padding-top: 24px;
+.attendance-page {
+  --background: #f5f8fc;
 }
 
-.form-container h1 {
-  font-size: 28px;
+.form-container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 22px 18px 32px;
+}
+
+.brand-panel {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0 22px;
+}
+
+.church-logo {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(7, 38, 78, 0.12);
+}
+
+.eyebrow {
+  display: block;
+  color: #0f5f9e;
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.brand-panel h1 {
+  color: #08244a;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0 0 8px;
+}
+
+.brand-panel p {
+  color: #50657c;
+  font-size: 15px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.form-card {
+  background: #fff;
+  border: 1px solid #dce7f3;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(7, 38, 78, 0.08);
+  padding: 10px 0 18px;
+}
+
+.form-card ion-item {
+  --background: transparent;
+  --border-color: #e4edf6;
+  --padding-start: 18px;
+  --inner-padding-end: 18px;
 }
 
 .permission-text {
-  color: var(--ion-color-medium);
-  font-size: 15px;
-  line-height: 1.4;
-  margin-bottom: 20px;
+  color: #566b82;
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 8px 18px 10px;
 }
 
 .submit-button {
-  margin-top: 24px;
+  --background: #073b78;
+  --background-activated: #062f60;
+  --border-radius: 6px;
+  font-weight: 700;
+  margin: 22px 18px 0;
 }
 
 .status-text {
-  margin-top: 18px;
+  color: #073b78;
+  margin: 18px 18px 0;
   font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 420px) {
+  .brand-panel {
+    grid-template-columns: 76px 1fr;
+  }
+
+  .church-logo {
+    width: 76px;
+    height: 76px;
+  }
+
+  .brand-panel h1 {
+    font-size: 24px;
+  }
 }
