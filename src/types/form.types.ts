@@ -6,6 +6,8 @@ export type LocationPayload = {
 
 export type CreateFormPayload = {
   fullName: string;
+  className: string;
+  leaderName: string;
   phone: string;
   comment: string;
   location: LocationPayload;
