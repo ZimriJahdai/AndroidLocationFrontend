@@ -1,4 +1,5 @@
 import { Geolocation } from '@capacitor/geolocation';
+import { Capacitor } from '@capacitor/core';
 
 export type DeviceLocation = {
   latitude: number;
@@ -7,6 +8,10 @@ export type DeviceLocation = {
 };
 
 export async function requestCurrentLocation(): Promise<DeviceLocation> {
+  if (!Capacitor.isNativePlatform()) {
+    return requestBrowserLocation();
+  }
+
   const permission = await Geolocation.requestPermissions();
 
   if (permission.location !== 'granted') {
@@ -23,4 +28,31 @@ export async function requestCurrentLocation(): Promise<DeviceLocation> {
     longitude: position.coords.longitude,
     accuracy: position.coords.accuracy ?? null
   };
+}
+
+function requestBrowserLocation(): Promise<DeviceLocation> {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error('Tu navegador no soporta ubicación'));
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy ?? null
+        });
+      },
+      () => {
+        reject(new Error('Permiso de ubicación denegado'));
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  });
 }
