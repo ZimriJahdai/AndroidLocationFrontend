@@ -60,8 +60,30 @@
 .form-card ion-item {
   --background: transparent;
   --border-color: #e4edf6;
+  --color: #1c2f46;
   --padding-start: 18px;
   --inner-padding-end: 18px;
+}
+
+.form-card ion-input,
+.form-card ion-textarea {
+  --color: #1c2f46;
+  --placeholder-color: #7a8ca2;
+  --placeholder-opacity: 1;
+  font-size: 16px;
+}
+
+.form-card ion-input::part(label),
+.form-card ion-textarea::part(label) {
+  color: #334e6c;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-card ion-input::part(native),
+.form-card ion-textarea::part(native) {
+  color: #1c2f46;
 }
 
 .permission-text {
