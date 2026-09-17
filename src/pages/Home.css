@@ -19,6 +19,18 @@
   padding: clamp(22px, 5vh, 44px) clamp(18px, 5vw, 72px);
 }
 
+.made-by {
+  grid-column: 1 / -1;
+  align-self: end;
+  color: rgba(8, 44, 88, 0.78);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin: -18px 0 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .brand-panel {
   color: #082c58;
   max-width: 320px;
@@ -239,6 +251,10 @@
 
   .form-card {
     justify-self: center;
+  }
+
+  .made-by {
+    margin-top: 0;
   }
 }
 
