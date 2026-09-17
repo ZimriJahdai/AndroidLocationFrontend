@@ -177,6 +177,8 @@ const Home: React.FC = () => {
               </IonText>
             )}
           </section>
+
+          <p className="made-by">Made by: Zimri Jahdai</p>
         </div>
       </IonContent>
     </IonPage>
