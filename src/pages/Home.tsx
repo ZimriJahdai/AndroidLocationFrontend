@@ -1,16 +1,24 @@
 import {
   IonButton,
   IonContent,
-  IonHeader,
+  IonIcon,
   IonInput,
   IonItem,
   IonPage,
   IonTextarea,
-  IonTitle,
-  IonToolbar,
   IonText,
   IonSpinner
 } from '@ionic/react';
+import {
+  arrowForward,
+  calendarOutline,
+  call,
+  chatbox,
+  informationCircle,
+  location,
+  people,
+  person
+} from 'ionicons/icons';
 import { useState } from 'react';
 import { createForm } from '../api/forms.api';
 import { requestCurrentLocation } from '../services/location.service';
@@ -59,29 +67,38 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Registro de asistencia</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
       <IonContent fullscreen className="attendance-page">
-        <div className="form-container">
-          <section className="brand-panel">
+        <div className="page-shell">
+          <section className="brand-panel" aria-label="Dios el unico camino">
             <img className="church-logo" src="/logo.png" alt="Dios el unico camino" />
-            <div>
-              <span className="eyebrow">Ministerio de alumnos</span>
-              <h1>Registro de asistencia</h1>
-              <p>Completa tus datos para confirmar tu participacion en la clase de hoy.</p>
-            </div>
+            <blockquote>
+              “En todo lo que hagáis,<br />
+              hacedlo de corazón,<br />
+              como para el Señor<br />
+              y no para los hombres.”
+            </blockquote>
+            <p className="verse-reference">Colosenses 3:23</p>
           </section>
 
           <section className="form-card">
-            <p className="permission-text">
-              Para validar la asistencia presencial, al registrar se solicitará tu ubicación actual.
-            </p>
+            <div className="form-heading">
+              <div className="heading-icon" aria-hidden="true">
+                <IonIcon icon={calendarOutline} />
+              </div>
+              <div className="heading-copy">
+                <span className="eyebrow">Ministerio de alumnos</span>
+                <h1>Registro de asistencia</h1>
+                <p>Completa tus datos para confirmar tu participación en la clase de hoy.</p>
+              </div>
+            </div>
 
-            <IonItem>
+            <div className="permission-box">
+              <IonIcon icon={informationCircle} />
+              <p>Para validar la asistencia presencial, al registrar se solicitará tu ubicación actual.</p>
+            </div>
+
+            <IonItem className="field-item">
+              <IonIcon slot="start" icon={person} />
               <IonInput
                 label="Nombre completo"
                 labelPlacement="stacked"
@@ -91,7 +108,8 @@ const Home: React.FC = () => {
               />
             </IonItem>
 
-            <IonItem>
+            <IonItem className="field-item">
+              <IonIcon slot="start" icon={people} />
               <IonInput
                 label="Clase o grupo"
                 labelPlacement="stacked"
@@ -101,7 +119,8 @@ const Home: React.FC = () => {
               />
             </IonItem>
 
-            <IonItem>
+            <IonItem className="field-item">
+              <IonIcon slot="start" icon={person} />
               <IonInput
                 label="Lider o encargado"
                 labelPlacement="stacked"
@@ -111,7 +130,8 @@ const Home: React.FC = () => {
               />
             </IonItem>
 
-            <IonItem>
+            <IonItem className="field-item">
+              <IonIcon slot="start" icon={call} />
               <IonInput
                 label="Telefono"
                 labelPlacement="stacked"
@@ -122,7 +142,8 @@ const Home: React.FC = () => {
               />
             </IonItem>
 
-            <IonItem>
+            <IonItem className="field-item">
+              <IonIcon slot="start" icon={chatbox} />
               <IonTextarea
                 label="Observacion opcional"
                 labelPlacement="stacked"
@@ -139,7 +160,15 @@ const Home: React.FC = () => {
               disabled={loading || !fullName || !className || !leaderName || !phone}
               className="submit-button"
             >
-              {loading ? <IonSpinner name="crescent" /> : 'Registrar asistencia'}
+              {loading ? (
+                <IonSpinner name="crescent" />
+              ) : (
+                <>
+                  <IonIcon icon={location} />
+                  <span>Registrar asistencia</span>
+                  <IonIcon icon={arrowForward} />
+                </>
+              )}
             </IonButton>
 
             {status && (
