@@ -4,7 +4,6 @@ import {
   IonHeader,
   IonInput,
   IonItem,
-  IonLabel,
   IonPage,
   IonTextarea,
   IonTitle,
@@ -83,8 +82,9 @@ const Home: React.FC = () => {
             </p>
 
             <IonItem>
-              <IonLabel position="stacked">Nombre completo</IonLabel>
               <IonInput
+                label="Nombre completo"
+                labelPlacement="stacked"
                 value={fullName}
                 onIonInput={(event) => setFullName(event.detail.value ?? '')}
                 placeholder="Nombre y apellido"
@@ -92,8 +92,9 @@ const Home: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="stacked">Clase o grupo</IonLabel>
               <IonInput
+                label="Clase o grupo"
+                labelPlacement="stacked"
                 value={className}
                 onIonInput={(event) => setClassName(event.detail.value ?? '')}
                 placeholder="Ej. Jovenes, discipulado, escuela dominical"
@@ -101,8 +102,9 @@ const Home: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="stacked">Lider o encargado</IonLabel>
               <IonInput
+                label="Lider o encargado"
+                labelPlacement="stacked"
                 value={leaderName}
                 onIonInput={(event) => setLeaderName(event.detail.value ?? '')}
                 placeholder="Nombre del encargado"
@@ -110,8 +112,9 @@ const Home: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="stacked">Telefono</IonLabel>
               <IonInput
+                label="Telefono"
+                labelPlacement="stacked"
                 value={phone}
                 onIonInput={(event) => setPhone(event.detail.value ?? '')}
                 placeholder="Numero de contacto"
@@ -120,8 +123,9 @@ const Home: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="stacked">Observacion opcional</IonLabel>
               <IonTextarea
+                label="Observacion opcional"
+                labelPlacement="stacked"
                 value={comment}
                 onIonInput={(event) => setComment(event.detail.value ?? '')}
                 placeholder="Comentario, peticion o nota de asistencia"
