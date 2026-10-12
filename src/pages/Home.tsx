@@ -178,7 +178,7 @@ const Home: React.FC = () => {
             )}
           </section>
 
-          <p className="made-by">Made by: Zimri Jahdai</p>
+          <p className="made-by">Made by: carrying the gospel of Jesus Christ</p>
         </div>
       </IonContent>
     </IonPage>
