@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.pnpm-store
 /.pnp
 .pnp.js
 
@@ -32,3 +33,13 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Android local/build output
+/android/.gradle
+/android/**/build
+/android/**/release
+/android/**/captures
+*.apk
+*.aab
+*.jks
+*.keystore
